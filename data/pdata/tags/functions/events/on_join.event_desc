@@ -4,10 +4,11 @@
 	],
 	"--PASSED--": [
 		"UUID: uuid",
-		"guuid: guuid"
+		"guuid: guuid",
+		"id": int
 	],
 	"--NOTES--": [
-		"the player's <UUID> and <guuid> are provided",
+		"the player's <UUID>, <guuid>, and <id> are provided",
 		"is called after #pdata:events/on_register"
 	],
 	"--FROM--": [

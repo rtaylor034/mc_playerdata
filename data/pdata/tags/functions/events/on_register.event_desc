@@ -5,11 +5,12 @@
 	],
 	"--PASSED--": [
 		"UUID: uuid",
-		"guuid: guuid"
+		"guuid: guuid",
+		"id": int
 	],
 	"--NOTES--": [
 		"can only otherwise be triggered if player data is wiped via 'pdata:api/admin/wipeplayerdata'",
-		"the player's <UUID> and <guuid> are provided"
+		"the player's <UUID>, <guuid>, and <id> are provided"
 	],
 	"--FROM--": [
 		"pdata:internal/playerdata/register"
