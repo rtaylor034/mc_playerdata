@@ -12,7 +12,12 @@ data modify storage pdata:var macro set from storage gssen:settings free_block
 data modify storage pdata:var macro.UUID set from entity @s UUID
 function pdata:internal/playerdata/setdata with storage pdata:var macro
 
-scoreboard players set @s pdata_rejoin -1
+#EVENT CALL : on_join
+data modify storage pdata:var macro.pass.UUID set from storage pdata:var macro.UUID
+data modify storage pdata:var macro.pass.guuid set from storage pdata:var macro.guuid
+execute store result storage pdata:var macro.pass.id int 1 run scoreboard players get @s pdata-player_id
+function #pdata:events/on_join with storage pdata:var macro.pass
 
-#RESETS
+scoreboard players set @s _pdata_rejoin -1
+
 data remove storage pdata:var macro

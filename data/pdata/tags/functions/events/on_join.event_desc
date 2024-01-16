@@ -1,0 +1,16 @@
+{
+	"--WHEN--": [
+		"a player joins the game"
+	],
+	"--PASSED--": [
+		"UUID: uuid",
+		"guuid: guuid"
+	],
+	"--NOTES--": [
+		"the player's <UUID> and <guuid> are provided",
+		"is called after #pdata:events/on_register"
+	],
+	"--FROM--": [
+		"pdata:internal/playerdata/onjoin"
+	]
+}
