@@ -19,12 +19,10 @@ function #pdata:events/on_register with storage pdata:var register
 
 data modify storage pdata:var register.storage set value {}
 
-data modify storage pdata:data players prepend from storage pdata:var register
+data modify storage pdata:data players append from storage pdata:var register
 
-#{loggr}
-data modify storage pdata:var register.log.in set value {source:"pdata", level:3}
-data modify storage pdata:var register.log.in.message."new player registered" set from storage pdata:data players[0]
-function loggr:api/log with storage pdata:var register.log
+#{loggr pass}
+data modify storage loggr:in log.in.message.player_joined.first_time set value true
 
 #resets
 data remove storage pdata:var register
