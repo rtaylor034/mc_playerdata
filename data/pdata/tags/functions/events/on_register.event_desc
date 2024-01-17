@@ -1,0 +1,18 @@
+{
+	"--WHEN--": [
+		"a player is registered into {pdata:data -> players}",
+		"(i.e. when a player first joins the world)"
+	],
+	"--PASSED--": [
+		"UUID: uuid",
+		"guuid: guuid",
+		"id": int
+	],
+	"--NOTES--": [
+		"can only otherwise be triggered if player data is wiped via 'pdata:api/admin/wipeplayerdata'",
+		"the player's <UUID>, <guuid>, and <id> are provided"
+	],
+	"--FROM--": [
+		"pdata:internal/playerdata/register"
+	]
+}
