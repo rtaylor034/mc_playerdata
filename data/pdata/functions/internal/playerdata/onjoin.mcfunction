@@ -22,8 +22,7 @@ function #pdata:events/on_join with storage pdata:var macro.pass
 
 #{loggr}
 data modify storage loggr:in log.in merge value {source:"pdata", level:3}
-$data modify storage loggr:in log.in.message.player_joined.player set from storage pdata:data players[{UUID:$(UUID)}]
-data remove storage loggr:in log.in.message.player_joined.player.storage
+$data modify storage loggr:in log.in.message.player_joined.player set from storage pdata:data players[{UUID:$(UUID)}].name
 function loggr:api/log with storage loggr:in log
 
 scoreboard players set @s _pdata-rejoin -1
