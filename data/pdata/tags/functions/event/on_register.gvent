@@ -3,11 +3,11 @@
  * when a unique player is registered (i.e. the first time a player joins).
     - is called directly after they are registered, before '#pdata:event/on_join'.
 --------------------
- AS-AT-> player
+ [AS] [AT] player
  -> entry: PlayerEntry
 --------------------
  <-> storage: obj
 --------------------
-- <player> is the player who was registered, <entry> is their entry in {pdata:data -> players}.
+- [player] is the player who was registered, <entry> is their entry in {pdata:data -> players}.
 - >storage< points to their storage for convienience.
 --------------------
