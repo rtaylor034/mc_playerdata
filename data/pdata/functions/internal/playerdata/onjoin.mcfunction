@@ -2,7 +2,7 @@
 # as : player that joined
 # with : @s
 #--------------------
-# - internal/tick
+# internal/tick
 #--------------------
 
 $execute store result score *onjoin.exists pdata_var if data storage pdata:data players[{UUID:$(UUID)}]

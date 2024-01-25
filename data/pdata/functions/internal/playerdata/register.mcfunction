@@ -1,7 +1,7 @@
 #>pdata:internal/playerdata/register
 # as : player registering
 #--------------------
-# - internal/playerdata/onjoin
+# ./onjoin
 #--------------------
 
 scoreboard players add *maxplayerid pdata_data 1
