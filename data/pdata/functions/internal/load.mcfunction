@@ -8,9 +8,6 @@
 #declare storage pdata:out
 #declare storage pdata:data
 
-#declare tag/function pdata:events/on_join
-#declare tag/function pdata:events/on_register
-
 #scoreboards
 scoreboard objectives add pdata_var dummy
 

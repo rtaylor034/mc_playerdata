@@ -2,7 +2,7 @@
 --------------------
  * when a player joins the game.
 --------------------
- AS -> player
+ AS-AT-> player
  -> entry: PlayerEntry
 --------------------
  <-> storage: obj
