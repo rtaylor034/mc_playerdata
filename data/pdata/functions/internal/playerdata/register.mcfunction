@@ -9,8 +9,7 @@ execute store result storage pdata:var register.id int 1 run scoreboard players 
 
 data modify storage pdata:var register.UUID set from entity @s UUID
 
-data modify storage gssen:in guuid.in.UUID set from storage pdata:var register.UUID
-function gssen:api/meta/guuid with storage gssen:in guuid
+function gssen:api/meta/guuid with storage pdata:var register
 
 data modify storage pdata:var register.guuid set from storage gssen:out guuid.result
 

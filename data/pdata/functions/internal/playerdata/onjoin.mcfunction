@@ -30,6 +30,9 @@ data modify storage gvent:in call.in.info.entry set from storage pdata:var onjoi
 data modify storage gvent:in call.in.pass.storage set from storage pdata:var onjoin.entry.storage
 function gvent:api/call with storage gvent:in call
 #------
+data modify storage pdata:var onjoin.entry.storage set from storage gvent:out call.pass.storage
+
+$data modify storage pdata:data players[{UUID:$(UUID)}] set from storage pdata:var onjoin.entry
 
 #{loggr}
 data modify storage loggr:in log.in merge value {source:"pdata", level:3}
