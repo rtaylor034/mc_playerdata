@@ -2,29 +2,45 @@
 # as : player that joined
 # with : @s
 #--------------------
-# - internal/tick
+# internal/tick
 #--------------------
 
-data modify storage loggr:in log.in.message.player_joined.first_time set value false
+$execute store result score *onjoin.exists pdata_var if data storage pdata:data players[{UUID:$(UUID)}]
 
-#there should never exist 2 {data -> players} entries with the same UUID
-$execute unless data storage pdata:data players[{UUID:$(UUID)}] run function pdata:internal/playerdata/register
+execute if score *onjoin.exists pdata_var matches 0 run function pdata:internal/playerdata/register
 
-data modify storage pdata:var macro set from storage gssen:settings free_block
-data modify storage pdata:var macro.UUID set from entity @s UUID
-function pdata:internal/playerdata/setdata with storage pdata:var macro
+$data modify storage pdata:var onjoin.entry set from storage pdata:data players[{UUID:$(UUID)}]
 
-#EVENT CALL : on_join
-data modify storage pdata:var macro.pass.UUID set from storage pdata:var macro.UUID
-data modify storage pdata:var macro.pass.guuid set from storage pdata:var macro.guuid
-execute store result storage pdata:var macro.pass.id int 1 run scoreboard players get @s pdata-player_id
-function #pdata:events/on_join with storage pdata:var macro.pass
+function pdata:internal/api/get_name
+data modify storage pdata:var onjoin.entry.name set from storage pdata:out get_name.result
+
+execute store result score @s pdata-player_id run data get storage pdata:var onjoin.entry.id
+
+#-- EVENT : on_register --
+data modify storage gvent:in call.in.event set value "#pdata:event/on_register"
+data modify storage gvent:in call.in.info.entry set from storage pdata:var onjoin.entry
+data modify storage gvent:in call.in.pass.storage set from storage pdata:var onjoin.entry.storage
+function gvent:api/call with storage gvent:in call
+#------
+data modify storage pdata:var onjoin.entry.storage set from storage gvent:out call.pass.storage
+
+#-- EVENT : on_join --
+data modify storage gvent:in call.in.event set value "#pdata:event/on_join"
+data modify storage gvent:in call.in.info.entry set from storage pdata:var onjoin.entry
+data modify storage gvent:in call.in.pass.storage set from storage pdata:var onjoin.entry.storage
+function gvent:api/call with storage gvent:in call
+#------
+data modify storage pdata:var onjoin.entry.storage set from storage gvent:out call.pass.storage
+
+$data modify storage pdata:data players[{UUID:$(UUID)}] set from storage pdata:var onjoin.entry
 
 #{loggr}
 data modify storage loggr:in log.in merge value {source:"pdata", level:3}
-$data modify storage loggr:in log.in.message.player_joined.player set from storage pdata:data players[{UUID:$(UUID)}].name
+data modify storage loggr:in log.in.message.player_joined.player set from storage pdata:var onjoin.entry.name
+execute store result storage loggr:in log.in.message.first_time byte 1 run scoreboard players get *onjoin.exists pdata_var
 function loggr:api/log with storage loggr:in log
 
 scoreboard players set @s _pdata-rejoin -1
 
-data remove storage pdata:var macro
+data remove storage pdata:var onjoin
+scoreboard players reset *onjoin.exists pdata_var

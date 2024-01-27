@@ -1,0 +1,12 @@
+> #pdata:event > on_join
+--------------------
+ * when a player joins the game.
+--------------------
+ [AS] [AT] player
+ -> entry: PlayerEntry
+--------------------
+ <-> storage: obj
+--------------------
+ - [player] is the player who joined, <entry> is their entry in {pdata:data -> players}.
+ - >storage< points to their storage for convienience.
+--------------------
