@@ -1,4 +1,4 @@
-#> pdata:api > self
+#> pdata:api > get_self
 #--------------------
 # [AS] self
 #--------------------
@@ -11,4 +11,4 @@
 # ...
 #--------------------
 
-function pdata:impl/self/do with entity @s
+function pdata:impl/get_self/do with entity @s
