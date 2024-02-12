@@ -10,7 +10,8 @@
 
 #scoreboards
 scoreboard objectives add pdata_var dummy
+scoreboard objectives add pdata_data dummy
 
-scoreboard objectives add _pdata-rejoin minecraft.custom:leave_game
+scoreboard objectives add _pdata-rejoin minecraft.custom:minecraft.leave_game
 
 scoreboard objectives add pdata-player_id dummy
