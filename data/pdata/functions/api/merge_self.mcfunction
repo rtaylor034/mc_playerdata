@@ -12,7 +12,6 @@
 # ...
 #--------------------
 
-$data modify storage pdata:in merge_self set value $(in)
 function pdata:impl/merge_self/do with entity @s
 
 data remove storage pdata:in merge_self

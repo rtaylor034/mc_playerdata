@@ -17,28 +17,28 @@ data modify storage pdata:var onjoin.entry.name set from storage pdata:out get_n
 execute store result score @s pdata-player_id run data get storage pdata:var onjoin.entry.id
 
 #-- EVENT : on_register --
-data modify storage gvent:in call.in.event set value "#pdata:event/on_register"
-data modify storage gvent:in call.in.info.entry set from storage pdata:var onjoin.entry
-data modify storage gvent:in call.in.pass.storage set from storage pdata:var onjoin.entry.storage
-function gvent:api/call with storage gvent:in call
+data modify storage gvent:in call.event set value "#pdata:event/on_register"
+data modify storage gvent:in call.info.entry set from storage pdata:var onjoin.entry
+data modify storage gvent:in call.pass.storage set from storage pdata:var onjoin.entry.storage
+function gvent:api/call
 #------
 data modify storage pdata:var onjoin.entry.storage set from storage gvent:out call.pass.storage
 
 #-- EVENT : on_join --
-data modify storage gvent:in call.in.event set value "#pdata:event/on_join"
-data modify storage gvent:in call.in.info.entry set from storage pdata:var onjoin.entry
-data modify storage gvent:in call.in.pass.storage set from storage pdata:var onjoin.entry.storage
-function gvent:api/call with storage gvent:in call
+data modify storage gvent:in call.event set value "#pdata:event/on_join"
+data modify storage gvent:in call.info.entry set from storage pdata:var onjoin.entry
+data modify storage gvent:in call.pass.storage set from storage pdata:var onjoin.entry.storage
+function gvent:api/call
 #------
 data modify storage pdata:var onjoin.entry.storage set from storage gvent:out call.pass.storage
 
 $data modify storage pdata:data players[{UUID:$(UUID)}] set from storage pdata:var onjoin.entry
 
 #{loggr}
-data modify storage loggr:in log.in merge value {source:"pdata", level:3}
-data modify storage loggr:in log.in.message.player_joined.player set from storage pdata:var onjoin.entry.name
-execute store success storage loggr:in log.in.message.first_time byte 1 unless score *onjoin.exists pdata_var matches 1..
-function loggr:api/log with storage loggr:in log
+data modify storage loggr:in log merge value {source:"pdata", level:3}
+data modify storage loggr:in log.message.player_joined.player set from storage pdata:var onjoin.entry.name
+execute store success storage loggr:in log.message.first_time byte 1 unless score *onjoin.exists pdata_var matches 1..
+function loggr:api/log
 
 scoreboard players set @s _pdata-rejoin -1
 
