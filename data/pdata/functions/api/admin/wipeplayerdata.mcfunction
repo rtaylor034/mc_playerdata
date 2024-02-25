@@ -14,7 +14,7 @@
 #{loggr}
 data modify storage pdata:var wipeplayerdata.UUID set value "NONE"
 data modify storage pdata:var wipeplayerdata.UUID set from entity @s UUID
-function pdata:impl/admin/wipeplayerdata/log with storage pdata:var wipeplayerdata
+execute if score *loggr load.status matches 1 run function pdata:impl/admin/wipeplayerdata/log with storage pdata:var wipeplayerdata
 
 scoreboard players set *max_index pdata_data 0
 data remove storage pdata:data players

@@ -34,11 +34,7 @@ data modify storage pdata:var onjoin.entry.storage set from storage gvent:out ca
 $data modify storage pdata:data players[{UUID:$(UUID)}] set from storage pdata:var onjoin.entry
 
 #{loggr}
-data modify storage loggr:in log merge value {source:"pdata", level:3}
-data modify storage loggr:in log.message.player_joined.player set from storage pdata:var onjoin.entry
-data remove storage loggr:in log.message.player_joined.player.storage
-execute store success storage loggr:in log.message.first_time byte 1 unless score *onjoin.exists pdata_var matches 1..
-function loggr:api/log
+execute if score *loggr load.status matches 1 run function pdata:internal/playerdata/onjoin.log
 
 scoreboard players set @s _pdata-rejoin -1
 
