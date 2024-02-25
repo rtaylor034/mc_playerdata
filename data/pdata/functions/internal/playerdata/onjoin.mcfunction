@@ -5,16 +5,15 @@
 # internal/tick
 #--------------------
 
-$execute store result score *onjoin.exists pdata_var if data storage pdata:data players[{UUID:$(UUID)}]
+$data modify storage pdata:var onjoin.entry set from storage pdata:data players[{UUID:$(UUID)}]
+execute store result score *onjoin.exists pdata_var if data storage pdata:var onjoin.entry
 
 execute if score *onjoin.exists pdata_var matches 0 run function pdata:internal/playerdata/register
-
-$data modify storage pdata:var onjoin.entry set from storage pdata:data players[{UUID:$(UUID)}]
 
 function pdata:internal/api/get_name
 data modify storage pdata:var onjoin.entry.name set from storage pdata:out get_name.result
 
-execute store result score @s pdata-player_id run data get storage pdata:var onjoin.entry.id
+execute store result score @s pdata-index run data get storage pdata:var onjoin.entry.index
 
 #-- EVENT : on_register --
 data modify storage gvent:in call.event set value "#pdata:event/on_register"
@@ -36,7 +35,8 @@ $data modify storage pdata:data players[{UUID:$(UUID)}] set from storage pdata:v
 
 #{loggr}
 data modify storage loggr:in log merge value {source:"pdata", level:3}
-data modify storage loggr:in log.message.player_joined.player set from storage pdata:var onjoin.entry.name
+data modify storage loggr:in log.message.player_joined.player set from storage pdata:var onjoin.entry
+data remove storage loggr:in log.message.player_joined.player.storage
 execute store success storage loggr:in log.message.first_time byte 1 unless score *onjoin.exists pdata_var matches 1..
 function loggr:api/log
 

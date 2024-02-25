@@ -14,7 +14,7 @@ PlayerEntry: {
     UUID: uuid
     guuid: guuid
     name: string
-    id: int
+    index: int
     storage: {
         <namespace...>: obj
     }
