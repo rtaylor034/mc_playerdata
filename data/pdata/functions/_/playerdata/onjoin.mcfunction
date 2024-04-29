@@ -2,7 +2,7 @@
 # as : player that joined
 # with : @s
 #--------------------
-# internal/tick
+# _/tick
 #--------------------
 
 $data modify storage pdata:var onjoin.entry set from storage pdata:data players[{UUID:$(UUID)}]
