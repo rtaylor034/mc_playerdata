@@ -29,6 +29,7 @@ data modify storage gvent:in call.info.entry set from storage pdata:var onjoin.e
 data modify storage gvent:in call.pass.storage set from storage pdata:var onjoin.entry.storage
 function gvent:api/call
 #------
+
 data modify storage pdata:var onjoin.entry.storage set from storage gvent:out call.pass.storage
 
 $data modify storage pdata:data players[{UUID:$(UUID)}] set from storage pdata:var onjoin.entry
