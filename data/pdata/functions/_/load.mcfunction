@@ -1,4 +1,4 @@
-#>pdata:internal/load
+#>pdata:_/load
 #--------------------
 # @LOAD
 #--------------------
@@ -19,5 +19,5 @@ scoreboard objectives add _pdata-rejoin minecraft.custom:minecraft.leave_game
 
 scoreboard objectives add pdata-index dummy
 
-schedule clear pdata:internal/tick
-schedule function pdata:internal/tick 1t
+schedule clear pdata:_/tick
+schedule function pdata:_/tick 1t

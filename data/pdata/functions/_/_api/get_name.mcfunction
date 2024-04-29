@@ -1,4 +1,4 @@
-#> pdata:internal/api > get_name
+#> pdata:_/_api > get_name
 #--------------------
 # (AS) player: player
 #--------------------
@@ -11,4 +11,4 @@
 # ...
 #--------------------
 
-function pdata:internal/impl/get_name/do with storage gssen:settings free_block
+function pdata:_/_impl/get_name/do with storage gssen:settings free_block

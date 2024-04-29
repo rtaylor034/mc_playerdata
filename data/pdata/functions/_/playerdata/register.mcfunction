@@ -1,4 +1,4 @@
-#>pdata:internal/playerdata/register
+#>pdata:_/playerdata/register
 # as : player registering
 #--------------------
 # ./onjoin

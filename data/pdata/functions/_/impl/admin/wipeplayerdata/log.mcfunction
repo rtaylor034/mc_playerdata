@@ -1,4 +1,4 @@
-#> pdata:impl/admin/wipeplayerdata/log
+#> pdata:_/impl/admin/wipeplayerdata/log
 #--------------------
 # @api
 #--------------------

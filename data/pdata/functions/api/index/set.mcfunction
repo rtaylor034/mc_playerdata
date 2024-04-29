@@ -14,7 +14,7 @@
 # 0 - no player entry found under <index>, or <index> matched more than 1 entry.
 #--------------------
 
-execute store result score *set pdata_return run function pdata:impl/index/set/do with storage pdata:in set
+execute store result score *set pdata_return run function pdata:_/impl/index/set/do with storage pdata:in set
 
 data remove storage pdata:in set
 

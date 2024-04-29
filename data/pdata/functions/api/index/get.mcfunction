@@ -15,7 +15,7 @@
 #--------------------
 
 data remove storage pdata:out get
-execute store result score *get pdata_return run function pdata:impl/index/get/do with storage pdata:in get
+execute store result score *get pdata_return run function pdata:_/impl/index/get/do with storage pdata:in get
 
 data remove storage pdata:in get
 

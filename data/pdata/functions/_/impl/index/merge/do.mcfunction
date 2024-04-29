@@ -1,4 +1,4 @@
-#> pdata:impl/index/merge/do
+#> pdata:_/impl/index/merge/do
 #--------------------
 # @api
 #--------------------

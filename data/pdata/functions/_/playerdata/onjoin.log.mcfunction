@@ -1,4 +1,4 @@
-#> pdata:internal/playerdata/onjoin.log
+#> pdata:_/playerdata/onjoin.log
 
 data modify storage loggr:in log merge value {source:"pdata", level:3}
 data modify storage loggr:in log.message.player_joined.player set from storage pdata:var onjoin.entry

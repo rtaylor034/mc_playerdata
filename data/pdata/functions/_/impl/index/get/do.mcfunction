@@ -1,4 +1,4 @@
-#> pdata:impl/index/get/do
+#> pdata:_/impl/index/get/do
 #--------------------
 # @api
 #--------------------

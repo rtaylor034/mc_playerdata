@@ -1,4 +1,4 @@
-#>pdata:internal/playerdata/onjoin
+#>pdata:_/playerdata/onjoin
 # as : player that joined
 # with : @s
 #--------------------
@@ -8,9 +8,9 @@
 $data modify storage pdata:var onjoin.entry set from storage pdata:data players[{UUID:$(UUID)}]
 execute store result score *onjoin.exists pdata_var if data storage pdata:var onjoin.entry
 
-execute if score *onjoin.exists pdata_var matches 0 run function pdata:internal/playerdata/register
+execute if score *onjoin.exists pdata_var matches 0 run function pdata:_/playerdata/register
 
-function pdata:internal/api/get_name
+function pdata:_/_api/get_name
 data modify storage pdata:var onjoin.entry.name set from storage pdata:out get_name.result
 
 execute store result score @s pdata-index run data get storage pdata:var onjoin.entry.index
@@ -35,7 +35,7 @@ data modify storage pdata:var onjoin.entry.storage set from storage gvent:out ca
 $data modify storage pdata:data players[{UUID:$(UUID)}] set from storage pdata:var onjoin.entry
 
 #{loggr}
-execute if score *loggr load.status matches 1 run function pdata:internal/playerdata/onjoin.log
+execute if score *loggr load.status matches 1 run function pdata:_/playerdata/onjoin.log
 
 scoreboard players set @s _pdata-rejoin -1
 
